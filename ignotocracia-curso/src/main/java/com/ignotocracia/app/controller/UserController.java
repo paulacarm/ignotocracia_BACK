@@ -59,6 +59,7 @@ public class UserController {
 	 * @param userId
 	 * @return
 	 */
+	@CrossOrigin
 	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/{id}")
 	public ResponseEntity<?> update(@RequestBody User userDetails,@PathVariable(value="id") Long userId){

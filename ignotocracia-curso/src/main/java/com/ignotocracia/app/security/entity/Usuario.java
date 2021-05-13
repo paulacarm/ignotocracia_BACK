@@ -46,9 +46,13 @@ public class Usuario {
     inverseJoinColumns = @JoinColumn(name = "rol_id"))
 	private Set<Rol> roles= new HashSet<>();
 	
-	@OneToMany(mappedBy = "usuario")
-	private Set<UsuarioLogro> logros = new HashSet<>();
+	//@OneToMany(mappedBy = "usuario")
+	//private Set<UsuarioLogro> logros = new HashSet<>();
 	
+
+
+
+
 	public Usuario() {
 		
 	}

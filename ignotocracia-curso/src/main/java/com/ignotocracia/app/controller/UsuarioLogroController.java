@@ -5,6 +5,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,27 +19,34 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ignotocracia.app.entity.Logro;
+import com.ignotocracia.app.entity.TipoJuego;
 import com.ignotocracia.app.entity.UsuarioLogro;
 import com.ignotocracia.app.entity.UsuarioLogroId;
+import com.ignotocracia.app.security.entity.Usuario;
+import com.ignotocracia.app.security.service.UsuarioService;
 import com.ignotocracia.app.service.UsuarioLogroService;
 
 @RestController
 @RequestMapping("/api/logrosusuario")
-@CrossOrigin
+@CrossOrigin(origins ="*")
 public class UsuarioLogroController {
 
 	@Autowired
 	UsuarioLogroService ulservice;
 	
-	@PreAuthorize("hasRole('ADMIN')")
-	@PostMapping
+
+	@Autowired
+	UsuarioService uservice;
+	
+
+	@PostMapping("/insertar")
 	public ResponseEntity<UsuarioLogro> create(@RequestBody UsuarioLogro ul){
 		return ResponseEntity.status(HttpStatus.CREATED).body(ulservice.save(ul));
 	}
-	
 	
 	
 	@CrossOrigin
@@ -48,6 +57,13 @@ public class UsuarioLogroController {
 				 .collect(Collectors.toList());
 		 return logrosusuario;
 	}
+	@GetMapping("/{idUsuario}")
+	public List<UsuarioLogro> readLogroPorUsuario(@PathVariable(value = "idUsuario")  int idUsuario){
+		 List<UsuarioLogro> logros= StreamSupport
+				 .stream(ulservice.getLogrosDeUsuario(idUsuario).spliterator(), false)
+				 .collect(Collectors.toList());
+		 return logros;
+	}
 	
 
 	/**Consultar un logro
@@ -55,51 +71,64 @@ public class UsuarioLogroController {
 	 * @param logroId
 	 * @return
 	 */
-	@GetMapping("/{id}")
-	public ResponseEntity<?> read(@PathVariable(value = "id")  UsuarioLogroId UsuarioLogroId){
-
-		Optional<UsuarioLogro> ul = ulservice.findById(UsuarioLogroId);
+	@CrossOrigin
+	@GetMapping("/{id1}/{id2}")
+	public ResponseEntity<?> read(@PathVariable("id1") Integer id1,@PathVariable("id2") Integer id2 ){
+		UsuarioLogroId id=new UsuarioLogroId(id1,id2);
+		Optional<UsuarioLogro> ul = ulservice.findById(id);
 		
 		if(!ul.isPresent()) {
+			System.out.println("no encontrado");
 			return ResponseEntity.notFound().build();
+	
 		}
 		return ResponseEntity.ok(ul);
 	}
+	
 	/**
 	 * Editar logro
 	 * @param logroDetails
 	 * @param logroId
 	 * @return
 	 */
-	@PreAuthorize("hasRole('ADMIN')")
-	@PutMapping("/{id}")
-	public ResponseEntity<?> update(@RequestBody UsuarioLogro ulDetails,@PathVariable(value="id") UsuarioLogroId UsuarioLogroId){
+	@PutMapping("/{id1}/{id2}")
+	public ResponseEntity<?> update(@RequestBody UsuarioLogro uldetails,@PathVariable("id1") Integer id1,@PathVariable("id2") Integer id2){
 		
-		Optional<UsuarioLogro> ul=ulservice.findById(UsuarioLogroId);
-		
+		UsuarioLogroId id =new UsuarioLogroId(id1,id2);
+		Optional<UsuarioLogro> ul=ulservice.findById(id);
+		System.out.println(ul.get().getLogro());
 		if(!ul.isPresent()) {
 			return ResponseEntity.notFound().build();
+	
 		}
-		
-		ul.get().setLogro(ulDetails.getLogro());
-		ul.get().setUsuario(ulDetails.getUsuario());
-		ul.get().setPuntos(ulDetails.getPuntos());
-
-		return ResponseEntity.status(HttpStatus.CREATED).body(ulservice.save(ul.get()));
+	
+		int puntos= ul.get().getPuntos()+uldetails.getPuntos();
+		System.out.println(puntos);
+		ul.get().setPuntos(puntos);
+		return ResponseEntity.status(HttpStatus.OK).body(ulservice.save(ul.get()));
 	}
+	
+	
 	/**
 	 * Borrar logro
 	 * @param logroId
 	 * @return
 	 */
 	@PreAuthorize("hasRole('ADMIN')")
-	@DeleteMapping("/{id}")
-	public ResponseEntity<?> delete(@PathVariable(value="id") UsuarioLogroId UsuarioLogroId){
-		
-		if(!ulservice.findById(UsuarioLogroId).isPresent()) {
+	@DeleteMapping("/{id1}/{id2}")
+	public ResponseEntity<?> delete(@PathVariable("id1") Integer id1,@PathVariable("id2") Integer id2){
+		System.out.println(id1);
+		System.out.println(id2);
+		UsuarioLogroId id=new UsuarioLogroId(id1,id2);
+		if(!ulservice.findById(id).isPresent()) {
+			System.out.println("no encontrado");
 			return ResponseEntity.notFound().build();
 		}
-		ulservice.deleteById(UsuarioLogroId);
+		ulservice.deleteById(id);
 		return  ResponseEntity.status(HttpStatus.OK).build();
 	}
+	
+
+
+
 }

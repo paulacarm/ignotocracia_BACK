@@ -36,17 +36,6 @@ private static final long serialVersionUID = 1L;
 	@MapsId("id_logro")
 	private Logro logro;
 	
-	
-	/*@Id
-	@ManyToOne
-	@JoinColumn(name = "id_usuario")
-	private Usuario usuario;
-	
-	@Id
-	@ManyToOne
-	@JoinColumn(name = "id_logro")
-	private Logro logro;*/
-	
 	@Column(name="puntos")
 	private int puntos;
 
