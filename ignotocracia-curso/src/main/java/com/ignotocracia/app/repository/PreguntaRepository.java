@@ -18,7 +18,7 @@ public interface PreguntaRepository extends JpaRepository<Pregunta,Integer> {
 	@Query(nativeQuery = true,value = " SELECT * FROM pregunta  WHERE dificultad_id =?")
 	List<Pregunta> getPreguntaspPorDicultad(Integer id);
 	
-	@Query(nativeQuery = true,value = " SELECT * FROM pregunta  WHERE logro_id =?")
+	@Query(nativeQuery = true,value = " SELECT * FROM pregunta  WHERE logro_id=?")
 	List<Pregunta> getPreguntaspPoLogro(Integer id);
 	
 

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.ignotocracia.app.entity.Respuesta;
 import com.ignotocracia.app.repository.RespuestaRepository;
-import com.ignotocracia.app.repository.UserRepository;
+
 
 @Service
 public class RespuestaServiceImpl implements RespuestaService {

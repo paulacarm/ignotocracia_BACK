@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ignotocracia.app.entity.Cronologia;
-import com.ignotocracia.app.entity.User;
+
 import com.ignotocracia.app.service.CronologiaService;
 
 

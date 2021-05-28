@@ -20,13 +20,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ignotocracia.app.entity.Pregunta;
 import com.ignotocracia.app.entity.Respuesta;
 import com.ignotocracia.app.service.RespuestaService;
 
 
 @RestController
 @RequestMapping("/api/respuestas")
-@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
+@CrossOrigin(origins = "*")
 public class RespuestaController {
 
 	@Autowired
@@ -71,6 +72,8 @@ public class RespuestaController {
 		if(!respuesta.isPresent()) {
 			return ResponseEntity.notFound().build();
 		}
+		Pregunta p=respuesta.get().getPregunta();
+		System.out.println("pregunta"+ p);
 		respuesta.get().setEsVerdadera(respuestaDetails.isEsVerdadera());
 		respuesta.get().setRespuesta(respuestaDetails.getRespuesta());
 		respuesta.get().setPregunta(respuestaDetails.getPregunta());

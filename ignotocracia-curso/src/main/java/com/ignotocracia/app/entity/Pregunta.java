@@ -2,6 +2,7 @@ package com.ignotocracia.app.entity;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,8 +32,7 @@ public class Pregunta {
 	@Column(name = "imagen")
 	private String imagen;
 	
-	@Column(name = "enlaceArticulo")
-	private String enlaceArticulo;
+
 	//Many hace referencia a la entidad y One al atributo.Muchas preguntas pertenecen a un logro
 	@ManyToOne
 	@JoinColumn(name="logro_id")
@@ -53,8 +53,8 @@ public class Pregunta {
 	/**
 	 * Lista de respuestas de la pregunta. Interesa almacenarlas en una lista
 	 */
-	//@OneToMany(mappedBy="pregunta")
-	//Set<Respuesta> listaRespuestas;
+	@OneToMany(mappedBy="pregunta", cascade = CascadeType.ALL)
+	Set<Respuesta> listaRespuestas;
 	
 	public Pregunta() {
 	
@@ -62,24 +62,24 @@ public class Pregunta {
 	}
 
 	//TODO- MIRAR CONSTRUCTORES. HAY QUE AÑADIR TODOS LOS CAMPOS FK??.
-	public Pregunta(@NotNull String pregunta, String saberMas, @NotNull String imagen, String enlaceArticulo,
+	public Pregunta(@NotNull String pregunta, String saberMas, @NotNull String imagen,
 			Logro logro, TipoJuego tipoJuego) {
 		super();
 		this.pregunta = pregunta;
 		this.saberMas = saberMas;
 		this.imagen = imagen;
-		this.enlaceArticulo = enlaceArticulo;
+		
 		this.logro = logro;
 		this.tipoJuego = tipoJuego;
 	}
 
 
-	public Pregunta(@NotNull String pregunta, String saberMas, @NotNull String imagen, String enlaceArticulo) {
+	public Pregunta(@NotNull String pregunta, String saberMas, @NotNull String imagen) {
 		super();
 		this.pregunta = pregunta;
 		this.saberMas = saberMas;
 		this.imagen = imagen;
-		this.enlaceArticulo = enlaceArticulo;
+	
 	}
 
 	public int getId() {
@@ -114,13 +114,7 @@ public class Pregunta {
 		this.imagen = imagen;
 	}
 
-	public String getEnlaceArticulo() {
-		return enlaceArticulo;
-	}
 
-	public void setEnlaceArticulo(String enlaceArticulo) {
-		this.enlaceArticulo = enlaceArticulo;
-	}
 
 	public Logro getLogro() {
 		return logro;

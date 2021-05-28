@@ -19,9 +19,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ignotocracia.app.entity.User;
-import com.ignotocracia.app.service.UserService;
+//import com.ignotocracia.app.entity.User;
 
+/*
 
 
 @RestController
@@ -58,7 +58,7 @@ public class UserController {
 	 * @param userDetails
 	 * @param userId
 	 * @return
-	 */
+	 *
 	@CrossOrigin
 	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/{id}")
@@ -107,4 +107,4 @@ public class UserController {
 				 .collect(Collectors.toList());
 		 return users;
 	}
-}
+}*/

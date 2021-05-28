@@ -21,7 +21,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ignotocracia.app.entity.TipoJuego;
 import com.ignotocracia.app.service.TipoJuegoService;
-
+/**
+ * 
+ * @author paula.carmona.moreno
+ *
+ */
 @RestController
 @RequestMapping("/api/tiposdejuego")
 @CrossOrigin

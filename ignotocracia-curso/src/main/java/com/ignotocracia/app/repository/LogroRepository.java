@@ -7,5 +7,7 @@ import com.ignotocracia.app.entity.Logro;
 
 @Repository
 public interface LogroRepository extends JpaRepository<Logro,Integer>{
+	
+	
 
 }

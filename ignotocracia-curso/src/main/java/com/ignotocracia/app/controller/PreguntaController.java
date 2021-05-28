@@ -21,9 +21,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ignotocracia.app.entity.Pregunta;
 import com.ignotocracia.app.entity.Respuesta;
-import com.ignotocracia.app.entity.User;
-import com.ignotocracia.app.service.PreguntaService;
 
+import com.ignotocracia.app.service.PreguntaService;
+/**
+ * 
+ * @author paula.carmona.moreno
+ *
+ */
 @RestController
 @RequestMapping("/api/preguntas")
 @CrossOrigin
@@ -111,12 +115,9 @@ public class PreguntaController {
 
 		pregunta.get().setCronologia(preguntaDetails.getCronologia());
 		pregunta.get().setDificultad(preguntaDetails.getDificultad());
-		pregunta.get().setEnlaceArticulo(preguntaDetails.getEnlaceArticulo());
 		pregunta.get().setImagen(preguntaDetails.getImagen());
 		pregunta.get().setLogro(preguntaDetails.getLogro());
 		pregunta.get().setPregunta(preguntaDetails.getPregunta());
-		pregunta.get().setPregunta(preguntaDetails.getPregunta());
-		pregunta.get().setEnlaceArticulo(preguntaDetails.getEnlaceArticulo());
 		pregunta.get().setTipoJuego(preguntaDetails.getTipoJuego());
 		pregunta.get().setSaberMas(preguntaDetails.getSaberMas());
 
