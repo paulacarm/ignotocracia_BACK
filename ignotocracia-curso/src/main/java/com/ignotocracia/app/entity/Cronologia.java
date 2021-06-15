@@ -6,7 +6,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
-
+/**
+ * 
+ * @author paula.carmona.moreno
+ *
+ */
 @Entity
 public class Cronologia {
 	@Id

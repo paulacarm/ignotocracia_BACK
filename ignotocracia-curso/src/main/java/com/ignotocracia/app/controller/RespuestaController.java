@@ -24,7 +24,11 @@ import com.ignotocracia.app.entity.Pregunta;
 import com.ignotocracia.app.entity.Respuesta;
 import com.ignotocracia.app.service.RespuestaService;
 
-
+/**
+ * 
+ * @author paula.carmona.moreno
+ *
+ */
 @RestController
 @RequestMapping("/api/respuestas")
 @CrossOrigin(origins = "*")
@@ -105,6 +109,11 @@ public class RespuestaController {
 		}
 		return ResponseEntity.ok(respuesta);
 	}
+	/**
+	 * Método personalizado que devuelve la respuesta verdadera de una pregunta
+	 * @param preguntaId
+	 * @return
+	 */
 	@CrossOrigin
 	@GetMapping("/respuestaVerdadera/{id}")
 	public ResponseEntity<?>getRespuestaDePregunta(@PathVariable(value = "id") Integer preguntaId) {

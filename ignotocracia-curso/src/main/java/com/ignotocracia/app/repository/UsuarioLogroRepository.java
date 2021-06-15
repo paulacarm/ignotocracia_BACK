@@ -17,7 +17,11 @@ public interface UsuarioLogroRepository extends JpaRepository<UsuarioLogro,Usuar
 	Optional<UsuarioLogro> findByUsuario(Usuario usuario);
 	
 	Optional<UsuarioLogro>findByUsuarioNombre(String nombreUsuario);
-	
+	/**
+	 * 
+	 * @param id
+	 * @return lista de logros de usuario ordenada de mayor a menor por puntos
+	 */
 	@Query(nativeQuery = true,value = "select * from usuario_logro where usuario_id=? order by puntos desc")
 	List<UsuarioLogro> getLogrosDeUsuario(Integer id);
 }

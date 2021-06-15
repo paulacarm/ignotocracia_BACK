@@ -37,7 +37,7 @@ import com.ignotocracia.app.security.service.RolService;
 import com.ignotocracia.app.security.service.UsuarioService;
 
 /**
- * 
+ * Controlador para la autentificación
  * @author paula.carmona.moreno API REST.
  *
  */
@@ -94,7 +94,7 @@ public class AuthController {
 	}
 
 	/**
-	 * Método login de la app. Capitulo 5
+	 * Método login de la app.
 	 * 
 	 * @param loginUsuario
 	 * @param bindingResult
@@ -112,7 +112,11 @@ public class AuthController {
 		JwtDto jwtDto = new JwtDto(jwt, userDetails.getUsername(), userDetails.getAuthorities());
 		return new ResponseEntity(jwtDto, HttpStatus.OK);
 	}
-	
+	/**
+	 * Método personalizado para obtener el usuario por nombre
+	 * @param nombreUsuario
+	 * @return estado OK
+	 */
 	@GetMapping("/{usuario}")
 	public ResponseEntity<?>getUsuarioXNombre(@PathVariable(value = "usuario") String nombreUsuario){
 

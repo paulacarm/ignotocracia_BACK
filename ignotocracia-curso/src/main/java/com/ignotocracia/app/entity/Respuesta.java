@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 public class Respuesta implements Serializable {
 	
 	/**
-	 * 
+	 * author paula.carmona.moreno
 	 */
 	private static final long serialVersionUID = 1L;
 

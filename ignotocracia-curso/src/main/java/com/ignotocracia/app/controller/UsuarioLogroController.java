@@ -29,7 +29,11 @@ import com.ignotocracia.app.entity.UsuarioLogroId;
 import com.ignotocracia.app.security.entity.Usuario;
 import com.ignotocracia.app.security.service.UsuarioService;
 import com.ignotocracia.app.service.UsuarioLogroService;
-
+/**
+ * 
+ * @author paula.carmona.moreno
+ *
+ */
 @RestController
 @RequestMapping("/api/logrosusuario")
 @CrossOrigin(origins ="*")

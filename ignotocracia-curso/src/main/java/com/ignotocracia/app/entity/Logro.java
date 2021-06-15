@@ -11,7 +11,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
-
+/**
+ * 
+ * @author  paula.carmona.moreno
+ *
+ */
 @Entity
 public class Logro {
 	

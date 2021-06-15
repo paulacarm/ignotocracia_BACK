@@ -16,7 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ignotocracia.app.entity.Dificultad;
 
 import com.ignotocracia.app.service.DificultadService;
-
+/**
+ * Controlador dificultad
+ * @author paula.carmona.moreno
+ *
+ */
 @RestController
 @RequestMapping("/api/dificultad")
 @CrossOrigin
@@ -26,7 +30,7 @@ public class DificultadController {
 	private DificultadService ds;
 	
 	/**
-	 * 
+	 * Obtener dificultad por id
 	 * @param dificultadId
 	 * @return
 	 */
@@ -40,7 +44,10 @@ public class DificultadController {
 		}
 		return ResponseEntity.ok(dificultad);
 	}
-	
+	/**
+	 * Obtener todas las dificultades
+	 * @return lista de dificultades
+	 */
 	@CrossOrigin
 	@GetMapping
 	public List<Dificultad> readAll(){

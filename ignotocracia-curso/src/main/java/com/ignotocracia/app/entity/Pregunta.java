@@ -13,7 +13,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-
+/**
+ * 
+ * @author paula.carmona.moreno
+ *
+ */
 @Entity
 @Table(name = "pregunta")
 public class Pregunta {
@@ -61,7 +65,6 @@ public class Pregunta {
 		
 	}
 
-	//TODO- MIRAR CONSTRUCTORES. HAY QUE AÑADIR TODOS LOS CAMPOS FK??.
 	public Pregunta(@NotNull String pregunta, String saberMas, @NotNull String imagen,
 			Logro logro, TipoJuego tipoJuego) {
 		super();

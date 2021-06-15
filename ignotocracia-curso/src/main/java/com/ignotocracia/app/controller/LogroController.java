@@ -22,7 +22,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ignotocracia.app.entity.Logro;
 
 import com.ignotocracia.app.service.LogroService;
-
+/**
+ * 
+ * @author paula.carmona.moreno
+ *
+ */
 @RestController
 @RequestMapping("/api/logros")
 @CrossOrigin

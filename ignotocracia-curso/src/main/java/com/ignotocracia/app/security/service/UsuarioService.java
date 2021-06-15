@@ -23,7 +23,7 @@ public class UsuarioService {
 	@Autowired
 	UsuarioRepository usuarioRepository;
 	
-	//Aqui el nombre del método da igual. Donde tiene que estar de una forma determinada es en el repositorio
+	
 	public Optional<Usuario>getByNombreUsuario(String nombreUsuario){
 		return usuarioRepository.findByNombreUsuario(nombreUsuario);
 	}

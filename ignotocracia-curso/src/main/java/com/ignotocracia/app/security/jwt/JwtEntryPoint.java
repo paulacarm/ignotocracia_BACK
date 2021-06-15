@@ -13,7 +13,7 @@ import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
 
 /**@author paula.carmona.moreno
-   Esta clase comprueba si hay un token válido si no devulve una respuesta 401 no autorizado.
+   Esta clase comprueba si hay un token válido si no devuelve una respuesta 401 no autorizado.
  * Rechaza las peticiones no autenticadas
  */
 @Component

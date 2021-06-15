@@ -22,7 +22,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ignotocracia.app.entity.Cronologia;
 
 import com.ignotocracia.app.service.CronologiaService;
-
+/**
+ * Controlador cronologia
+ * @author paula.carmona.moreno
+ *
+ */
 
 @RestController
 @RequestMapping("/api/cronologia")
